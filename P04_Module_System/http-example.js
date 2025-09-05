@@ -7,7 +7,7 @@
 
 const http = require('http'); 
 
-const request = http.request('http://google.com', (res) => {
+const request = http.request('http://www.google.com', (res) => {
     res.on('data', (chunk) => {
         console.log(`Data chunk: ${chunk}`);
     });

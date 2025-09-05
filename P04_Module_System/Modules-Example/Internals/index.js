@@ -1,4 +1,13 @@
-module.exports = {
-    request: require('../Internals/request'),
-    response: require('../Internals/response'),
-};
+// const request = require('./request');
+// const response = require('./response');
+
+module.exports ={
+  ...require('./request'),
+  ...require('./response'),
+}
+
+// module.exports = {
+//   REQUEST_TIMEOUT: request.REQUEST_TIMEOUT,
+//   send: request.send,
+//   read: response.read,
+// }

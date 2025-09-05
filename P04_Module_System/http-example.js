@@ -6,9 +6,13 @@
 //.res.on() is a method that is used to listen for events on the response.
 
 // const http = require('https');  // for secure request
-const http = require('http'); 
+// const http = require('http');  
+// const {request} = require('https'); // modern ecma script syntax used for destructuring
+const {get} = require('https'); // Conenience function (only to get data from  server not for sending )
 
-const request = http.request('http://www.google.com', (res) => {
+// http.request is not used in modern ecma script syntax
+//request function doesn't need to prefixed with http (http.request)
+const req = get('https://www.google.com', (res) => {
     res.on('data', (chunk) => {
         console.log(`Data chunk: ${chunk}`);
     });
@@ -17,4 +21,4 @@ const request = http.request('http://www.google.com', (res) => {
     });
 });
 
-request.end();
+// req.end(); // not used when using get() function

@@ -5,6 +5,7 @@
 //.request() is a method that is used to create a request.
 //.res.on() is a method that is used to listen for events on the response.
 
+// const http = require('https');  // for secure request
 const http = require('http'); 
 
 const request = http.request('http://www.google.com', (res) => {

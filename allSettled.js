@@ -11,3 +11,6 @@ Promise.all([promiseOne, promiseTwo]).then(data => console.log(data))
 // promise.all() will be rejected and it will not run the then() method and it will run the catch() method.
 
 Promise.allSettled([promiseOne, promiseTwo]).then(data => console.log(data)).catch(err => console.log("Something went wrong",err))
+
+// Promise.allSettled() method is used to run multiple promises at the same time and it will not reject the whole promise.allSettled() 
+// if one of the promises is rejected. It will run the then() method and it will not run the catch() method.

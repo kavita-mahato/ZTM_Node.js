@@ -1,3 +1,10 @@
+// 1. parallel() is a function that runs all the promises in parallel and returns the results in the order they were called.
+// 2. sequence() is a function that runs all the promises in sequence and returns the results in the order they were called.
+// 3. The difference between parallel() and sequence() is that parallel() runs all the promises at the same time, while sequence() runs 
+// the promises one after the other.
+// 4. race() is a function that runs all the promises in parallel and returns the result of the first promise that resolves.
+
+
 const promisify = (item, delay) => {
   return new Promise((resolve) => {
     setTimeout(() => {

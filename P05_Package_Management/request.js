@@ -1,18 +1,12 @@
-const REQUEST_TIMEOUT = 500;
-// module.exports.REQUEST_TIMEOUT = 500; // for exporting a single property
+const axios = require('axios');
 
-function encrypt(data){
-    return 'encrypted data';
-}
-
-function send(url, data){
-    const encryptedData = encrypt(data);
-    console.log(`Sending ${encryptedData} to ${url}`);
-}
-
-module.exports ={
-    REQUEST_TIMEOUT,
-    send,
-}
-
-console.log("Hello from request.js")
+axios.get('https://www.google.com')
+  .then(response => {
+    console.log(response);
+  })
+  .catch((err) =>{
+    console.log(err);
+  })
+  .then(() => {
+    console.log('All done!');
+  });

@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "csv-parse": "^6.1.0",
     "express": "^5.1.0"
   },
   "devDependencies": {

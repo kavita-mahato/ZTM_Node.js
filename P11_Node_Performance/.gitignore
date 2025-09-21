@@ -1,0 +1,18 @@
+# Dependencies (most important - contains all your npm packages)
+node_modules/
+
+# Environment variables (if you use them later)
+.env
+.env.local
+
+# Log files
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files (if you use VS Code or other editors)
+.vscode/
+.idea/

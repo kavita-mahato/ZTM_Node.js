@@ -17,8 +17,8 @@ app.get('/timer', async (req, res) => {
     //delay the response (non-blocking)
     // Now multiple requests can be handled concurrently by different workers
     // or even by the same worker if it's not busy
-    await delay(9000);
-    res.send(`Ding Ding Ding! ${process.pid}`);
+    await delay(4000);
+    res.send(`Beep Beep Beep! ${process.pid}`);
 });
 
 console.log('Running server.js...');

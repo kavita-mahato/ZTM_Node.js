@@ -10,9 +10,6 @@ function delay(duration) {
     });
 }
 app.get('/', (req, res) => {
-  // JSON.stringify({}) => "{}"
-  // JSON.parse("{}") => {}
-  // [5,1,2,4,3].sort() => [1,2,3,4,5]
   res.send(`Performance example: ${process.pid}`);
 });
 

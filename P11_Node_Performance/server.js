@@ -26,7 +26,7 @@ if (cluster.isMaster) {
   console.log('Master has been started...');
   
   // Create multiple workers
-  const numCPUs = os.cpus().length;
+  const numCPUs = os.cpus().length; // Number of logical CPU cores
   console.log(`Creating ${numCPUs} workers...`);
   
   for (let i = 0; i < numCPUs; i++) {

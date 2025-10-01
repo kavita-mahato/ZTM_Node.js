@@ -7,3 +7,6 @@ const planetsSchema = new mongoose.Schema({
         unique: true,
     }
 });
+
+// Connects planetsSchema with "planets" collection
+module.exports = mongoose.model('Planet', planetsSchema);

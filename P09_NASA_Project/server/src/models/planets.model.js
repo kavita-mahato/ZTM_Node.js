@@ -47,33 +47,25 @@ async function getAllPlanets() {
 }
 
 async function savePlanet(planet) {
-  try{
-    await planets.updateOne({
-      keplerName: planet.keplerName,
-    },{
-      keplerName: planet.keplerName,
-    },{
-      upsert: true,
-    });
-  } catch(err){
+  try {
+    await planets.updateOne(
+      {
+        keplerName: planet.kepler_name,
+      },
+      {
+        keplerName: planet.kepler_name,
+      },
+      {
+        upsert: true,
+      }
+    );
+  } catch (err) {
     console.error(`Could not save planet ${err}`);
   }
 }
 
-  // Create/update a new planet document in MongoDB
-  await planets.updateOne(
-    {
-      keplerName: data.kepler_name,
-    },
-    {
-      keplerName: data.kepler_name,
-    },
-    {
-      upsert: true,
-    }
-  );
-
 module.exports = {
   loadPlanetsData,
   getAllPlanets,
+  savePlanet,
 };

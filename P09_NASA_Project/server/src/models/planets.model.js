@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { parse } = require("csv-parse");
 
+// Import the Mongoose model we created
 const planets = require("./planets.mongo");
 
 const habitablePlanets = [];
@@ -27,6 +28,7 @@ function loadPlanetsData() {
       .on("data", async (data) => {
         if (isHabitablePlanet(data)) {
           // TODO: Replace below create with insert + update = upsert
+          // Create a new planet document in MongoDB
           // await planets.create({
           //   keplerName: data.kepler_name,
           // });
@@ -43,8 +45,8 @@ function loadPlanetsData() {
   });
 }
 
-function getAllPlanets() {
-  return habitablePlanets;
+async function getAllPlanets() {
+  return await planets.find({});
 }
 
 module.exports = {

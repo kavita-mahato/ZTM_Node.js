@@ -23,6 +23,7 @@ async function httpAddNewLaunch(req, res) {
         });
     }
     await scheduleNewlaunch(launch);
+    console.log(launch);
     return res.status(201).json(launch);
 }
 

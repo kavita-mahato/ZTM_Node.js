@@ -1,7 +1,6 @@
 const axios = require("axios");
 const launchesDatabase = require("./launches.mongo");
 const planets = require("./planets.mongo");
-const { response } = require("../app");
 
 const DEFAULT_FLIGHT_NUMBER = 100;
 
@@ -20,7 +19,8 @@ saveLaunch(launch);
 
 const SPACEX_API_URL = "https://api.spacexdata.com/v4/launches/query";
 
-async function loadLaunchData() {
+async function populateLaunches() {
+    
   console.log("Downloading launch data...");
   const response = await axios.post(SPACEX_API_URL, {
     query: {},
@@ -52,20 +52,40 @@ async function loadLaunchData() {
     const launch = {
       flightNumber: launchDoc.flight_number,
       mission: launchDoc["name"],
-      rocket: launchDoc["rocket"].name,
+      rocket: launchDoc["rocket"]["name"],
       launchDate: launchDoc["date_local"],
-      target: launchDoc["payloads"][0].customers[0],
       upcoming: launchDoc["upcoming"],
       success: launchDoc["success"],
       customers,
     };
 
     console.log(`${launch.flightNumber} ${launch.mission}`);
+
+    // TODO: populate launch collection...
   }
 }
 
+async function loadLaunchData() {
+  const firstLaunch = await findLaunch({
+    flightNumber: 1,
+    rocket: "Falcon 1",
+    mission: "FalconSat",
+  }); 
+  
+  //check if launch already exists in DB
+  if (firstLaunch) {
+    console.log("Launch data already loaded!");
+  }else {
+    await populateLaunches();
+  }
+}
+
+async function findLaunch(filter) {
+  return await launchesDatabase.findOne(filter);
+}
+
 async function existsLaunchWithId(launchId) {
-  return await launchesDatabase.findOne({
+  return await findLaunch({
     flightNumber: launchId,
   });
 }

@@ -2,10 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const express = require('express');
+const helmet = require('helmet');
 
 const PORT = 3000;
 
 const app = express();
+
+app.use(helmet());
+
+// Middleware to set Content Security Policy
 
 app.get('/secret', (req, res) => {
   return res.send('Your personal secret code is 12345');

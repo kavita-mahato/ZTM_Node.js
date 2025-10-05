@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGO_URL =
-  "mongodb+srv://kavita-mahato:6138112A@nasacluster.6bs4hiv.mongodb.net/nasa?retryWrites=true&w=majority&appName=NASACluster";
+const MONGO_URL = process.env.MONGO_URL;
 
 // runs once when the connection is successfully opened.
 mongoose.connection.once("open", () => {
